@@ -12,8 +12,9 @@ public class Caracters : MonoBehaviour
     [SerializeField]
     private int delay = 5;
     [SerializeField]
-    private int delayToDesapers = 5;
+    private int delayToDisappear = 5;
 
+    [SerializeField]
     private List<string> _text;
 
     enum State
@@ -25,14 +26,22 @@ public class Caracters : MonoBehaviour
 
     [SerializeField]
     private State state;
+
+    private int _textIndex;
     
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         ChangeState(State.Normal);
         
         _noise = GetComponent<AudioSource>();
         
+        //CallToCome();
+    }
+
+    private void CallToCome()
+    {
+        _textIndex = Random.Range(0, _text.Count);
         _noise.Play();
         
         StartCoroutine(ComeToRoom());
@@ -50,23 +59,24 @@ public class Caracters : MonoBehaviour
 
         Debug.Log("Caracter in the room !");
 
+        Debug.Log($"{_text[_textIndex]}");
         ChangeState(State.Sus);
         // ChangeState(State.detect);
 
         if (state != State.Detect)
-            StartCoroutine(Desapers());
+            StartCoroutine(Disappear());
         else
             Debug.Log("Game over");
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private IEnumerator Desapers()
+    private IEnumerator Disappear()
     {
         Debug.Log("Caracter move back");
         
-        yield return new WaitForSeconds(delayToDesapers);
+        yield return new WaitForSeconds(delayToDisappear);
 
-        Debug.Log("Destroy caracters");
+        Debug.Log("disappear caracters");
         Destroy(this);
     }
 }
