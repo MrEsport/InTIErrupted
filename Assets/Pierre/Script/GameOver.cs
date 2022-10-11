@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    private int compteur = 0;
-    private bool lampe, yoga, fauteuil = false;
+    public int compteur = 0;
+    public bool lampe, yoga, fauteuil = false;
 
-    /*public float timer = 0.0f;
+    public float timer = 0.0f;
 
     
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 10)
+        if (timer >= 5)
         {
             CheckButtons();
             timer = 0;
         }
-    }*/
+    }
 
     public void CheckButtons()
     {
