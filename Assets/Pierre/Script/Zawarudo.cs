@@ -5,7 +5,7 @@ using TMPro;
 
 public class Zawarudo : MonoBehaviour
 {
-    public int timer = 0;
+    public float timer = 0.0f;
     public TextMeshProUGUI chronoCompteur;
 
 
