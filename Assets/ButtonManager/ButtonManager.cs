@@ -24,10 +24,5 @@ public class ButtonManager : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Merci Pierre  :)
-    /// </summary>
-    /// <param name="button"></param>
-    /// <returns></returns>
-    bool GetButton(EButton button) => buttons[(int)button].GetButton();
+    public bool GetButton(EButton button) => buttons[(int)button].GetButton();
 }
