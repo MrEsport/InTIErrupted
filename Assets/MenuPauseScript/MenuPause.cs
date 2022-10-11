@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuPause : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] 
+    private GameObject menuPause;
+    [SerializeField] 
+    private string creditSceneName;
+    
+    public void Play()
     {
-        
+        Time.timeScale = 1;
+        menuPause.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Pause()
     {
-        
+        Time.timeScale = 0;
+    }
+
+    public void CreditScene()
+    {
+        SceneManager.LoadScene(creditSceneName);
+    }
+    
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
