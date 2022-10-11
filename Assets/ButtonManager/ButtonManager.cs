@@ -23,6 +23,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     [SerializeField] private List<IRLButton> buttons;
+    [SerializeField] private IRLButton winButton;
 
     private void Awake()
     {
@@ -53,6 +54,8 @@ public class ButtonManager : MonoBehaviour
         }
         NoButton = count < 2;
     }
+
+    public bool GetWinButton() => winButton.GetButton();
 
     private bool GetButton(EButton button) => buttons[(int)button].GetButton();
 }
