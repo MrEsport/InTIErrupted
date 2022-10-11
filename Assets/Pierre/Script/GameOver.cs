@@ -5,22 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public int compteurl, compteury, compteurf = 0;
-    public bool lampe, yoga, fauteuil = false;
-
-    public float timer = 0.0f;
-
-    
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer >= 5)
-        {
-            CheckButtons();
-            timer = 0;
-        }
-    }
-
     public void CheckButtons()
     {
         ButtonManager.Instance.CheckButtons();
