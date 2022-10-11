@@ -45,7 +45,7 @@ public class Caracters : MonoBehaviour
         CallToCome();
     }
 
-    private void CallToCome()
+    public void CallToCome()
     {
         _indexWhenCome = Random.Range(0, textData.GetTextWhenCome().Count);
         _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
