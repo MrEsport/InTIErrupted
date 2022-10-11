@@ -72,10 +72,9 @@ public class Caracters : MonoBehaviour
 
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
         
-        ChangeState(State.Detect);
-        // ChangeState(State.detect);
-
-
+        ChangeState(State.Sus);
+        // ChangeState(State.Detect);
+        
         switch (state)
         {
             case State.Detect:
