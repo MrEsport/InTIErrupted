@@ -46,8 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - group: 0
+    count: 0
     keys: 7a00000078000000
   - group: 1
+    count: 0
     keys: 6c000000
   - group: 2
+    count: 0
     keys: 140100001301000011010000
+  winButton:
+    group: -1
+    count: 2
+    keys: 080000001b000000

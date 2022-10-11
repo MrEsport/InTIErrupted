@@ -12,14 +12,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (gameEnded)
-            return;
+        if (gameEnded) return;
+        
+        // Derniers appels avant Fin : Animation ? Timer ?
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        //if (endingGame) return;
+
+        if (ButtonManager.Instance.GetWinButton())
             KeysWin();
-
-        if (endingGame)
-            return;
 
         timer += Time.deltaTime;
         if (timer >= 5)
@@ -42,21 +42,21 @@ public class GameManager : MonoBehaviour
 
     public void GameOverFaitRien()
     {
-        Debug.Log("Tu fous rien");
+        Debug.Log("Tu fous rien !\nGAME OVER");
         //SceneManager.LoadScene("GameOver");
         endingGame = true;
     }
 
     public void GameOverFaitTrop()
     {
-        Debug.Log("Tu es encore là?");
+        Debug.Log("Tu es encore là?\nGAME OVER");
         //SceneManager.LoadScene("GameOver");
         endingGame = true;
     }
 
     public void KeysWin()
     {
-        Debug.Log("Clés trouvées.. Porte fermées... (¬ v ¬)");
+        Debug.Log("Clés trouvées.. Porte fermées... (¬ v ¬)\nGAME OVER");
         endingGame = true;
     }
 }
