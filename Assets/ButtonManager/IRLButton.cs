@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct IRLButton
+public class IRLButton
 {
     public EButton group;
+    public int count;
     [SerializeField] private KeyCode[] keys;
 
     public bool GetButton()
@@ -15,4 +16,7 @@ public struct IRLButton
             if (!Input.GetKey(keys[i])) return false;
         return true;
     }
+
+    public void ResetCount() => count = 0;
+    public void Increment() => count++;
 }
