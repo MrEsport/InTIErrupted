@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public struct IRLButton
 {
-    public string name;
+    public EButton group;
     [SerializeField] private KeyCode[] keys;
 
     public bool GetButton()

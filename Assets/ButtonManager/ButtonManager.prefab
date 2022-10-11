@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
-  - name: Chair
+  - group: 0
     keys: 7a00000078000000
-  - name: Lamp
+  - group: 1
     keys: 6c000000
-  - name: Yoga
+  - group: 2
     keys: 140100001301000011010000
