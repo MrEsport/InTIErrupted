@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public int compteur = 0;
+    public int compteurl, compteury, compteurf = 0;
     public bool lampe, yoga, fauteuil = false;
 
     public float timer = 0.0f;
@@ -23,50 +23,107 @@ public class GameOver : MonoBehaviour
 
     public void CheckButtons()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.S))
         {
-            yoga = false;
             fauteuil = false;
-            if (!lampe)
+            if (!lampe && !yoga)
             {
                 lampe = true;
-                compteur = 0;
-                compteur++;
+                yoga = true;
+                compteurl = 0;
+                compteurl++;
+                compteury = 0;
+                compteury++;
             }
-            else if (compteur < 2)
-                compteur++;
+            else if (!lampe)
+            {
+                lampe = true;
+                compteurl = 0;
+                compteurl++;
+                compteury++;
+            }
+            else if (!yoga)
+            {
+                yoga = true;
+                compteury = 0;
+                compteurl++;
+                compteury++;
+            }
+            else if (compteurl < 2 && compteury < 2)
+            {
+                compteurl++;
+                compteury++;
+            }
             else
                 GameOverFaitTrop();
         } 
         
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
             lampe = false;
-            fauteuil = false;
-            if (!yoga)
+            if (!yoga && !fauteuil)
+            {
+                fauteuil = true;
+                yoga = true;
+                compteurf = 0;
+                compteurf++;
+                compteury = 0;
+                compteury++;
+            }
+            else if (!fauteuil)
+            {
+                fauteuil = true;
+                compteurf = 0;
+                compteurf++;
+                compteury++;
+            }
+            else if (!yoga)
             {
                 yoga = true;
-                compteur = 0;
-                compteur++;
+                compteury = 0;
+                compteurf++;
+                compteury++;
             }
-            else if (compteur < 2)
-                compteur++;
+            else if (compteurf < 2 && compteury < 2)
+            {
+                compteurf++;
+                compteury++;
+            }
             else
                 GameOverFaitTrop();
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Q))
         {
-            lampe = false;
             yoga = false;
-            if (!fauteuil)
+            if (!lampe && !fauteuil)
             {
                 fauteuil = true;
-                compteur = 0;
-                compteur++;
+                lampe = true;
+                compteurf = 0;
+                compteurf++;
+                compteurl = 0;
+                compteurl++;
             }
-            else if (compteur < 2)
-                compteur++;
+            else if (!fauteuil)
+            {
+                fauteuil = true;
+                compteurf = 0;
+                compteurf++;
+                compteurl++;
+            }
+            else if (!lampe)
+            {
+                lampe = true;
+                compteurl = 0;
+                compteurf++;
+                compteurl++;
+            }
+            else if (compteurf < 2 && compteurl < 2)
+            {
+                compteurf++;
+                compteurl++;
+            }
             else
                 GameOverFaitTrop();
         }
