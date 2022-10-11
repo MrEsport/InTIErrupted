@@ -1,21 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-
-// struct par personnage (bruit / delai / Texte / etat ?) || POO
+// lerp appear and disappear (change a)
 
 public class Caracters : MonoBehaviour
 {
     private AudioSource _noise;
-    
-    [SerializeField]
-    private int delay = 5;
-    [SerializeField]
-    private int delayToDisappear = 5;
 
     [SerializeField]
-    private List<string> _text;
+    private float delay = 5;
+    [SerializeField]
+    private float delayToDisappear = 5;
+    [SerializeField]
+    private float delayForSayingSomething = 0.2f;
+
+    [SerializeField] 
+    private TextData textData;
 
     enum State
     {
@@ -27,21 +30,29 @@ public class Caracters : MonoBehaviour
     [SerializeField]
     private State state;
 
-    private int _textIndex;
+    private int _indexWhenCome;
+    private int _indexWhenNothingSus;
+    private int _indexWhenSus;
+    private int _indexWhenDetectSomething;
     
     // Start is called before the first frame update
     protected void Start()
     {
         ChangeState(State.Normal);
         
+        
         _noise = GetComponent<AudioSource>();
         
-        //CallToCome();
+        CallToCome();
     }
 
     private void CallToCome()
     {
-        _textIndex = Random.Range(0, _text.Count);
+        _indexWhenCome = Random.Range(0, textData.GetTextWhenCome().Count);
+        _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
+        _indexWhenSus = Random.Range(0, textData.GetTextWhenSus().Count);
+        _indexWhenDetectSomething = Random.Range(0, textData.GetTextWhenDetectSomething().Count);
+        
         _noise.Play();
         
         StartCoroutine(ComeToRoom());
@@ -57,26 +68,53 @@ public class Caracters : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        Debug.Log("Caracter in the room !");
+        Debug.Log("<color=green>Character in the room !</color>");
 
-        Debug.Log($"{_text[_textIndex]}");
-        ChangeState(State.Sus);
+        Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
+        
+        ChangeState(State.Detect);
         // ChangeState(State.detect);
 
-        if (state != State.Detect)
-            StartCoroutine(Disappear());
-        else
-            Debug.Log("Game over");
+
+        switch (state)
+        {
+            case State.Detect:
+            {
+                StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
+                Debug.Log("<color=red>Game over</color>");
+                break;
+            }
+            case State.Normal:
+            {
+                StartCoroutine(SayText(textData.GetTextWhenNothingSus()[_indexWhenNothingSus], delayForSayingSomething));
+                StartCoroutine(Disappear());
+                break;
+            }
+            case State.Sus:
+            {
+                StartCoroutine(SayText(textData.GetTextWhenSus()[_indexWhenSus], delayForSayingSomething));
+                StartCoroutine(Disappear());
+                break;
+            }
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator Disappear()
     {
-        Debug.Log("Caracter move back");
-        
         yield return new WaitForSeconds(delayToDisappear);
 
-        Debug.Log("disappear caracters");
+        Debug.Log("<color=blue>disappear characters</color>");
         Destroy(this);
+    }
+
+    private IEnumerator SayText(string text, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        Debug.Log(text);
     }
 }

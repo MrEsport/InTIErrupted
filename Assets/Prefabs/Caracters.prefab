@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 5
   delayToDisappear: 5
+  textData: {fileID: 6217363316618396227, guid: 8a8bcb643596e724a9078925c74b13d1, type: 3}
   _text:
   - Hello world
   - Test

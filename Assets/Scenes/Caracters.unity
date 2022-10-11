@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caracters
       objectReference: {fileID: 0}
+    - target: {fileID: 2447906422191060084, guid: aef5b4582a95b7f4fa310027c38806a3, type: 3}
+      propertyPath: textData
+      value: 
+      objectReference: {fileID: 6217363316618396225, guid: 8a8bcb643596e724a9078925c74b13d1, type: 3}
     - target: {fileID: 2447906422191060086, guid: aef5b4582a95b7f4fa310027c38806a3, type: 3}
       propertyPath: m_RootOrder
       value: 2
