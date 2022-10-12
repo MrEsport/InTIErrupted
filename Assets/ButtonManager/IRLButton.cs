@@ -20,3 +20,9 @@ public class IRLButton
     public void ResetCount() => count = 0;
     public void Increment() => count++;
 }
+
+public struct PushedButton
+{
+    public EButton button;
+    public int count;
+}
