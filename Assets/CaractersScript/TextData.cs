@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextData : MonoBehaviour
+[CreateAssetMenu(fileName = "TextData", menuName = "TextData")]
+public class TextData : ScriptableObject
 {
     [SerializeField] private List<string> textWhenCome;
     [SerializeField] private List<string> textWhenNothingSus;

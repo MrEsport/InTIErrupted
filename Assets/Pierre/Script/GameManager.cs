@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float timer = 0.0f;
-
     private bool endingGame = false;
     private bool gameEnded = false;
+
 
     void Update()
     {
@@ -20,13 +19,6 @@ public class GameManager : MonoBehaviour
 
         if (ButtonManager.Instance.GetWinButton())
             KeysWin();
-
-        timer += Time.deltaTime;
-        if (timer >= 5)
-        {
-            CheckButtons();
-            timer = 0;
-        }
     }
 
     public void CheckButtons()
