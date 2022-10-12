@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 // lerp appear and disappear (change a)
@@ -28,6 +29,15 @@ public class Caracters : MonoBehaviour
         Normal,
         Sus,
         Detect
+    }
+
+    [SerializeField]
+    private List<GameObject> icon;
+
+    public int IndexWhenCome
+    {
+        get => _indexWhenCome;
+        set => _indexWhenCome = value;
     }
 
     [SerializeField]
@@ -80,11 +90,6 @@ public class Caracters : MonoBehaviour
         Debug.Log("<color=green>Character in the room !</color>");
 
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
-        
-        // ChangeState(State.Sus);
-        // ChangeState(State.Detect);
-
-        // yield return new WaitForSeconds(5);
 
         ButtonManager.Instance.CheckButtons();
         
@@ -92,7 +97,22 @@ public class Caracters : MonoBehaviour
             ChangeState(State.Detect);
         else
         {
-            // if (ButtonManager.Instance.)
+            List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
+            
+            // if (pushedButtons.)
+
+            // foreach (var button in pushedButtons)
+            // {
+            //     if (button.count == 1)
+            //     {
+            //         icon[button.group]
+            //     }
+            // }
+
+            // foreach (var i in icon)
+            // {
+            //     i.SetActive(pushedButtons[i]);
+            // }
         }
         
         switch (state)
@@ -130,6 +150,8 @@ public class Caracters : MonoBehaviour
         
         // lerp fade out
         // Destroy(this);
+        
+        StopAllCoroutines();
     }
 
     private IEnumerator SayText(string text, float delay)
