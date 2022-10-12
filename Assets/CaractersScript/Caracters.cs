@@ -74,14 +74,18 @@ public class Caracters : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator ComeToRoom()
     {
+        // lerp fade in
+        
         yield return new WaitForSeconds(delay);
 
         Debug.Log("<color=green>Character in the room !</color>");
 
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
         
-        ChangeState(State.Sus);
+        // ChangeState(State.Sus);
         // ChangeState(State.Detect);
+
+        // yield return new WaitForSeconds(5);
         
         switch (state)
         {
@@ -115,7 +119,9 @@ public class Caracters : MonoBehaviour
         yield return new WaitForSeconds(delayToDisappear);
 
         Debug.Log("<color=blue>disappear characters</color>");
-        Destroy(this);
+        
+        // lerp fade out
+        // Destroy(this);
     }
 
     private IEnumerator SayText(string text, float delay)
