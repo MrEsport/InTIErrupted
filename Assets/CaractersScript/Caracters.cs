@@ -43,7 +43,6 @@ public class Caracters : MonoBehaviour
     {
         ChangeState(State.Normal);
         
-        
         _noise = GetComponent<AudioSource>();
         
         CallToCome();
