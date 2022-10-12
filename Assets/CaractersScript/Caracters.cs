@@ -22,7 +22,7 @@ public class Caracters : MonoBehaviour
 
     [SerializeField] 
     private bool isCat;
-
+    
     public enum State
     {
         Normal,
@@ -37,7 +37,7 @@ public class Caracters : MonoBehaviour
     private int _indexWhenNothingSus;
     private int _indexWhenSus;
     private int _indexWhenDetectSomething;
-    
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -74,7 +74,7 @@ public class Caracters : MonoBehaviour
     private IEnumerator ComeToRoom()
     {
         // lerp fade in
-        
+
         yield return new WaitForSeconds(delay);
 
         Debug.Log("<color=green>Character in the room !</color>");
@@ -85,6 +85,15 @@ public class Caracters : MonoBehaviour
         // ChangeState(State.Detect);
 
         // yield return new WaitForSeconds(5);
+
+        ButtonManager.Instance.CheckButtons();
+        
+        if (ButtonManager.Instance.NoButton || ButtonManager.Instance.IsTooMany)
+            ChangeState(State.Detect);
+        else
+        {
+            // if (ButtonManager.Instance.)
+        }
         
         switch (state)
         {
