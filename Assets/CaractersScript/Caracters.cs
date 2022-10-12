@@ -20,7 +20,10 @@ public class Caracters : MonoBehaviour
     [SerializeField] 
     private TextData textData;
 
-    enum State
+    [SerializeField] 
+    private bool isCat;
+
+    public enum State
     {
         Normal,
         Sus,
@@ -46,7 +49,7 @@ public class Caracters : MonoBehaviour
         CallToCome();
     }
 
-    private void CallToCome()
+    public void CallToCome()
     {
         _indexWhenCome = Random.Range(0, textData.GetTextWhenCome().Count);
         _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
@@ -58,9 +61,14 @@ public class Caracters : MonoBehaviour
         StartCoroutine(ComeToRoom());
     }
 
-    private void ChangeState(State value)
+    public void ChangeState(State value)
     {
         state = value;
+    }
+
+    public bool IsCat()
+    {
+        return isCat;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
