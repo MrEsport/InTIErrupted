@@ -44,12 +44,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add608e2fb51dc7468dc7eb3d68e487a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textData: {fileID: 11400000, guid: 5f62bfc1bda1a2c419a4611feb1f8729, type: 2}
   delay: 5
   delayToDisappear: 5
-  delayForSayingSomething: 0.2
-  textData: {fileID: 11400000, guid: 5f62bfc1bda1a2c419a4611feb1f8729, type: 2}
+  delayForSayingSomething: 2
   isCat: 0
-  iconNormal: []
-  iconSus: []
-  iconDetect: []
+  interrupterTransform: {fileID: 0}
+  interrupterSprite: {fileID: 0}
+  familySprites:
+  - {fileID: 181048107, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
+  - {fileID: -2110349994, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
+  bubble: {fileID: 0}
+  icon1: {fileID: 0}
+  icon2: {fileID: 0}
+  iconNormal:
+  - {fileID: 21300000, guid: 843cce98aaeacad4e8823568c27cee74, type: 3}
+  - {fileID: 21300000, guid: 6f58c14aa6145e041a0930df57a4462e, type: 3}
+  - {fileID: 21300000, guid: dca85139dc79f804286d8f2e6af00863, type: 3}
+  iconSus:
+  - {fileID: 21300000, guid: 08b9ea45e000ab5499e3d9fcecb2c934, type: 3}
+  - {fileID: 21300000, guid: 2390eeff68c890a4ab6b325e783e66a6, type: 3}
+  - {fileID: 21300000, guid: 07df164c28f0ac74dbc79aeea5e88627, type: 3}
+  iconDetect:
+  - {fileID: 21300000, guid: c41cba6e4dace50479cce8d5a3c26ee6, type: 3}
+  - {fileID: 21300000, guid: e1ee56cfce4759348a003e22a118a873, type: 3}
+  - {fileID: 21300000, guid: 68288c7e90126044ba8ab65abaa265ae, type: 3}
   state: 0
+  doors:
+  - {fileID: 0}
+  - {fileID: 0}
+  particles: {fileID: 1175122701287269044, guid: db55aef0044296543a05dd17d52f494a, type: 3}

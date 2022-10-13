@@ -66,6 +66,16 @@ public class Caracters : MonoBehaviour
     private int _indexWhenSus;
     private int _indexWhenDetectSomething;
 
+    [Header("Doors")]
+    [SerializeField]
+    private List<Transform> doors;
+    [SerializeField]
+    private ParticleSystem particles;
+    [SerializeField]
+    private List<Sprite> partSprite;
+
+    private bool enteringDoorLeft = true;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -74,7 +84,12 @@ public class Caracters : MonoBehaviour
         HideIntruder();
         HideIcons();
     }
-    
+
+    protected void Update()
+    {
+        //
+    }
+
     public void CallToCome()
     {
         StopAllCoroutines();
@@ -83,9 +98,10 @@ public class Caracters : MonoBehaviour
         _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenDetectSomething = Random.Range(0, textData.GetTextWhenDetectSomething().Count);
+        enteringDoorLeft = Random.Range(-1f, 1f) <= 0f;
 
         // Knock Before Entering
-        SoundTransmitter.Instance.Play("Knock");
+        StartCoroutine(DoorKnockFeedback(enteringDoorLeft));
         
         StartCoroutine(ComeToRoom());
     }
@@ -223,5 +239,27 @@ public class Caracters : MonoBehaviour
     {
         Debug.Log("<color=red>Game over</color>");
         Zawarudo.stop = true;
+    }
+
+    // Doors logic
+    private IEnumerator DoorKnockFeedback(bool left)
+    {
+        SoundTransmitter.Instance.Play(left ? "KnockL" : "KnockR");
+
+        Transform door = doors[left ? 0 : 1];
+
+        yield return new WaitForSeconds(.15f);
+
+        ParticleSystem ps = Instantiate(particles, door);
+        ps.transform.forward = door.forward * (left ? -1 : 1);
+        ps.textureSheetAnimation.SetSprite(0, partSprite[left ? 0 : 1]);
+
+        for (int i = 0; i < 3; ++i)
+        {
+            ps.Play();
+            yield return new WaitForSeconds(.4f);
+        }
+
+        Destroy(ps.gameObject);
     }
 }

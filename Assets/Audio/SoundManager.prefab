@@ -45,11 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Knock
+  - name: KnockL
     clip: {fileID: 8300000, guid: a476623d895705e4480f65bbcf774156, type: 3}
     audioMixerGroup: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
     volume: 1
     pitch: 1.1
+    pan: -0.35
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: KnockR
+    clip: {fileID: 8300000, guid: a476623d895705e4480f65bbcf774156, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
+    volume: 1
+    pitch: 1.1
+    pan: 0.35
     playOnAwake: 0
     loop: 0
     source: {fileID: 0}
