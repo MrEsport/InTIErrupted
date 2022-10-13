@@ -9,8 +9,10 @@ using Random = UnityEngine.Random;
 
 public class Caracters : MonoBehaviour
 {
-    private AudioSource _noise;
+    [SerializeField] 
+    private TextData textData;
 
+    [Header("Event Delays")]
     [SerializeField]
     private float delay = 5;
     [SerializeField]
@@ -19,15 +21,20 @@ public class Caracters : MonoBehaviour
     private float delayForSayingSomething = 0.2f;
 
     [SerializeField] 
-    private TextData textData;
-
-    [SerializeField] 
     private bool isCat;
 
-    [Header("Sprites")]
+    [Header("Family Members")]
     [SerializeField]
-    private List<Sprite> familyMembers = new List<Sprite>();
-    
+    private List<Sprite> familySprites = new List<Sprite>();
+
+    [Header("Icons")]
+    [SerializeField]
+    private SpriteRenderer bubble;
+    [SerializeField]
+    private SpriteRenderer icon1;
+    [SerializeField]
+    private SpriteRenderer icon2;
+
     public enum State
     {
         Normal,
@@ -35,12 +42,13 @@ public class Caracters : MonoBehaviour
         Detect
     }
 
+    [Header("Sprites")]
     [SerializeField]
-    private List<GameObject> iconNormal;    
+    private List<Sprite> iconNormal;    
     [SerializeField]
-    private List<GameObject> iconSus;    
+    private List<Sprite> iconSus;    
     [SerializeField]
-    private List<GameObject> iconDetect;
+    private List<Sprite> iconDetect;
 
     public int IndexWhenCome
     {
@@ -56,15 +64,14 @@ public class Caracters : MonoBehaviour
     private int _indexWhenSus;
     private int _indexWhenDetectSomething;
 
-    private List<GameObject> _icons;
-
     // Start is called before the first frame update
     protected void Start()
     {
         ChangeState(State.Normal);
-        
-        _noise = GetComponent<AudioSource>();
-        CallToCome();
+
+        bubble.gameObject.SetActive(false);
+        icon1.gameObject.SetActive(false);
+        icon2.gameObject.SetActive(false);
     }
     
     public void CallToCome()
@@ -75,8 +82,6 @@ public class Caracters : MonoBehaviour
         _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenDetectSomething = Random.Range(0, textData.GetTextWhenDetectSomething().Count);
-        
-        _noise.Play();
         
         StartCoroutine(ComeToRoom());
     }
@@ -97,8 +102,8 @@ public class Caracters : MonoBehaviour
         // lerp fade in
 
         yield return new WaitForSeconds(delay);
-
-        Debug.Log("<color=green>Character in the room !</color>");
+        
+        ShowIcons();
 
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
 
@@ -112,25 +117,18 @@ public class Caracters : MonoBehaviour
 
             for (int i = 0; i < pushedButtons.Count; i++)
             {
-                switch (pushedButtons[i].count)
+                Sprite stateSprite = (pushedButtons[i].count) switch
                 {
-                    case 1:
-                        iconNormal[(int)pushedButtons[i].button].SetActive(true);
-                        _icons.Add(iconNormal[(int)pushedButtons[i].button]);
-                        break;
-                    case 2:
-                        ChangeState(State.Sus);
-                        iconSus[(int)pushedButtons[i].button].SetActive(true);
-                        _icons.Add(iconSus[(int)pushedButtons[i].button]);
-                        break;
-                    case 3:
-                        iconDetect[(int)pushedButtons[i].button].SetActive(true);
-                        _icons.Add(iconDetect[(int)pushedButtons[i].button]);
-                        ChangeState(State.Detect);
-                        break;
-                    default:
-                        break;
-                }
+                    1 => iconNormal[(int)pushedButtons[i].button],
+                    2 => iconSus[(int)pushedButtons[i].button],
+                    3 => iconDetect[(int)pushedButtons[i].button],
+                    _ => throw new NotImplementedException()
+                };
+
+                if (i == 0)
+                    icon1.sprite = stateSprite;
+                else
+                    icon2.sprite = stateSprite;
             }
         }
         
@@ -160,12 +158,18 @@ public class Caracters : MonoBehaviour
         }
     }
 
-    private void HiddeIcon()
+    private void ShowIcons()
     {
-        foreach (var icon in _icons)
-        {
-            icon.SetActive(false);
-        }
+        bubble.gameObject.SetActive(true);
+        icon1.gameObject.SetActive(true);
+        icon2.gameObject.SetActive(true);
+    }
+
+    private void HiddeIcons()
+    {
+        bubble.gameObject.SetActive(false);
+        icon1.gameObject.SetActive(false);
+        icon2.gameObject.SetActive(false);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -175,7 +179,7 @@ public class Caracters : MonoBehaviour
 
         Debug.Log("<color=blue>disappear characters</color>");
         
-        HiddeIcon();
+        HiddeIcons();
 
         StopAllCoroutines();
     }
