@@ -16,7 +16,7 @@ public class Caracters : MonoBehaviour
     [SerializeField]
     private float delayToDisappear = 5;
     [SerializeField]
-    private float delayForSayingSomething = 2f;
+    private float delayForSayingSomething = 0.2f;
 
     [SerializeField] 
     private TextData textData;
@@ -60,8 +60,6 @@ public class Caracters : MonoBehaviour
         ChangeState(State.Normal);
         
         _noise = GetComponent<AudioSource>();
-        
-        //CallToCome();
     }
     
     public void CallToCome()
