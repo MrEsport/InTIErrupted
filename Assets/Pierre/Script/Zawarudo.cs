@@ -6,11 +6,11 @@ using System.Runtime.CompilerServices;
 
 public class Zawarudo : MonoBehaviour
 {
-    public float timer = 0;
+    private float timer = 0;
     private float timerEvent = 0;
-    private bool isCalculated = false;
+    public int waitingTime, aleaMin, aleaMax;
 
-    public TextMeshProUGUI chronoCompteur;
+    //public TextMeshProUGUI chronoCompteur;
     public GameObject charaCall;
     private Caracters characters;
 
@@ -18,7 +18,7 @@ public class Zawarudo : MonoBehaviour
     private bool tokiwotomare = false;
     void Start()
     {
-        timerEvent = Random.Range(8, 12);
+        timerEvent = Random.Range(aleaMin, aleaMax);
         characters = charaCall.GetComponent<Caracters>();
     }
 
@@ -26,11 +26,11 @@ public class Zawarudo : MonoBehaviour
     {
         if (!tokiwotomare)
             timer += Time.deltaTime;
-        chronoCompteur.text = timer.ToString();
+        //chronoCompteur.text = timer.ToString();
 
         timer2 += Time.deltaTime;
 
-        if (timer2 >= 12 && tokiwotomare)
+        if (timer2 >= waitingTime && tokiwotomare)
             tokiwotomare = false;
 
         if (timer >= timerEvent)
@@ -38,7 +38,7 @@ public class Zawarudo : MonoBehaviour
             characters.CallToCome();
             timer = 0;
             timer2 = 0;
-            timerEvent = Random.Range(8, 12);
+            timerEvent = Random.Range(aleaMin, aleaMax);
             tokiwotomare = true;
             /*Debug.Log("Time Stop");
             StartCoroutine(WaitChara());
