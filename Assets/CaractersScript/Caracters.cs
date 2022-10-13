@@ -238,7 +238,7 @@ public class Caracters : MonoBehaviour
     private void Gameover()
     {
         Debug.Log("<color=red>Game over</color>");
-        Zawarudo.stop = true;
+        //Zawarudo.stop = true;
     }
 
     // Doors logic
