@@ -32,7 +32,11 @@ public class Caracters : MonoBehaviour
     }
 
     [SerializeField]
-    private List<GameObject> icon;
+    private List<GameObject> iconNormal;    
+    [SerializeField]
+    private List<GameObject> iconSus;    
+    [SerializeField]
+    private List<GameObject> iconDetect;
 
     public int IndexWhenCome
     {
@@ -48,18 +52,20 @@ public class Caracters : MonoBehaviour
     private int _indexWhenSus;
     private int _indexWhenDetectSomething;
 
+    private List<GameObject> _icons;
+
     // Start is called before the first frame update
     protected void Start()
     {
         ChangeState(State.Normal);
         
         _noise = GetComponent<AudioSource>();
-        
-        CallToCome();
     }
-
+    
     public void CallToCome()
     {
+        StopAllCoroutines();
+        
         _indexWhenCome = Random.Range(0, textData.GetTextWhenCome().Count);
         _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenSus = Random.Range(0, textData.GetTextWhenSus().Count);
@@ -98,21 +104,29 @@ public class Caracters : MonoBehaviour
         else
         {
             List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
-            
-            // if (pushedButtons.)
 
-            // foreach (var button in pushedButtons)
-            // {
-            //     if (button.count == 1)
-            //     {
-            //         icon[button.group]
-            //     }
-            // }
-
-            // foreach (var i in icon)
-            // {
-            //     i.SetActive(pushedButtons[i]);
-            // }
+            for (int i = 0; i < pushedButtons.Count; i++)
+            {
+                switch (pushedButtons[i].count)
+                {
+                    case 1:
+                        iconNormal[(int)pushedButtons[i].button].SetActive(true);
+                        _icons.Add(iconNormal[(int)pushedButtons[i].button]);
+                        break;
+                    case 2:
+                        ChangeState(State.Sus);
+                        iconSus[(int)pushedButtons[i].button].SetActive(true);
+                        _icons.Add(iconSus[(int)pushedButtons[i].button]);
+                        break;
+                    case 3:
+                        iconDetect[(int)pushedButtons[i].button].SetActive(true);
+                        _icons.Add(iconDetect[(int)pushedButtons[i].button]);
+                        ChangeState(State.Detect);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         
         switch (state)
@@ -141,6 +155,14 @@ public class Caracters : MonoBehaviour
         }
     }
 
+    private void HiddeIcon()
+    {
+        foreach (var icon in _icons)
+        {
+            icon.SetActive(false);
+        }
+    }
+
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator Disappear()
     {
@@ -148,9 +170,8 @@ public class Caracters : MonoBehaviour
 
         Debug.Log("<color=blue>disappear characters</color>");
         
-        // lerp fade out
-        // Destroy(this);
-        
+        HiddeIcon();
+
         StopAllCoroutines();
     }
 
