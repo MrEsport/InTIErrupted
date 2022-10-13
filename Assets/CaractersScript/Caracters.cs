@@ -15,12 +15,15 @@ public class Caracters : MonoBehaviour
     [SerializeField]
     private float delayToDisappear = 5;
     [SerializeField]
-    private float delayForSayingSomething = 0.2f;
+    private float delayForSayingSomething = 2f;
 
     [SerializeField] 
     private TextData textData;
 
-    enum State
+    [SerializeField] 
+    private bool isCat;
+
+    public enum State
     {
         Normal,
         Sus,
@@ -42,7 +45,7 @@ public class Caracters : MonoBehaviour
         
         _noise = GetComponent<AudioSource>();
         
-        CallToCome();
+        //CallToCome();
     }
 
     public void CallToCome()
@@ -57,22 +60,31 @@ public class Caracters : MonoBehaviour
         StartCoroutine(ComeToRoom());
     }
 
-    private void ChangeState(State value)
+    public void ChangeState(State value)
     {
         state = value;
+    }
+
+    public bool IsCat()
+    {
+        return isCat;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator ComeToRoom()
     {
+        // lerp fade in
+        
         yield return new WaitForSeconds(delay);
 
         Debug.Log("<color=green>Character in the room !</color>");
 
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
         
-        ChangeState(State.Sus);
+        // ChangeState(State.Sus);
         // ChangeState(State.Detect);
+
+        // yield return new WaitForSeconds(5);
         
         switch (state)
         {
@@ -106,7 +118,9 @@ public class Caracters : MonoBehaviour
         yield return new WaitForSeconds(delayToDisappear);
 
         Debug.Log("<color=blue>disappear characters</color>");
-        Destroy(this);
+        
+        // lerp fade out
+        // Destroy(this);
     }
 
     private IEnumerator SayText(string text, float delay)
