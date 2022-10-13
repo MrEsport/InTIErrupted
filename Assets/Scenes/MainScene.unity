@@ -958,9 +958,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 741373798}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: interrupterSprite
+      value: 
+      objectReference: {fileID: 1328089150}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: iconSus.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: interrupterTransform
+      value: 
+      objectReference: {fileID: 1328089151}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: iconDetect.Array.size
       value: 3
@@ -987,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: familySprites.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: iconDetect.Array.data[0]

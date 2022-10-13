@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-// lerp appear and disappear (change a)
-
 public class Caracters : MonoBehaviour
 {
     [SerializeField] 
@@ -24,6 +22,10 @@ public class Caracters : MonoBehaviour
     private bool isCat;
 
     [Header("Family Members")]
+    [SerializeField]
+    private Transform interrupterTransform;
+    [SerializeField]
+    private SpriteRenderer interrupterSprite;
     [SerializeField]
     private List<Sprite> familySprites = new List<Sprite>();
 
@@ -69,9 +71,8 @@ public class Caracters : MonoBehaviour
     {
         ChangeState(State.Normal);
 
-        bubble.gameObject.SetActive(false);
-        icon1.gameObject.SetActive(false);
-        icon2.gameObject.SetActive(false);
+        HideIntruder();
+        HideIcons();
     }
     
     public void CallToCome()
@@ -83,6 +84,7 @@ public class Caracters : MonoBehaviour
         _indexWhenSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenDetectSomething = Random.Range(0, textData.GetTextWhenDetectSomething().Count);
 
+        // Knock Before Entering
         SoundTransmitter.Instance.Play("Knock");
         
         StartCoroutine(ComeToRoom());
@@ -101,10 +103,12 @@ public class Caracters : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator ComeToRoom()
     {
-        // lerp fade in
-
+        // delay after knocking
         yield return new WaitForSeconds(delay);
+
+        ShowIntruder();
         
+        yield return new WaitForSeconds(delayForSayingSomething);
         ShowIcons();
 
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
@@ -160,6 +164,18 @@ public class Caracters : MonoBehaviour
         }
     }
 
+    private void ShowIntruder()
+    {
+        interrupterSprite.sprite = familySprites[Random.Range(0, familySprites.Count)];
+
+        interrupterTransform.gameObject.SetActive(true);
+    }
+
+    private void HideIntruder()
+    {
+        interrupterTransform.gameObject.SetActive(false);
+    }
+
     private void ShowIcons()
     {
         bubble.gameObject.SetActive(true);
@@ -167,7 +183,7 @@ public class Caracters : MonoBehaviour
         icon2.gameObject.SetActive(true);
     }
 
-    private void HiddeIcons()
+    private void HideIcons()
     {
         bubble.gameObject.SetActive(false);
         icon1.gameObject.SetActive(false);
@@ -179,9 +195,8 @@ public class Caracters : MonoBehaviour
     {
         yield return new WaitForSeconds(delayToDisappear);
 
-        Debug.Log("<color=blue>disappear characters</color>");
-        
-        HiddeIcons();
+        HideIcons();
+        HideIntruder();
 
         StopAllCoroutines();
     }
