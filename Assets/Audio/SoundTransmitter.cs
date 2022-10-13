@@ -38,7 +38,11 @@ public class SoundTransmitter : MonoBehaviour
     {
         if (Instance)
             Destroy(gameObject);
-        _instance = this;
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
         foreach (Sound s in sounds)
         {
