@@ -46,11 +46,8 @@ public class GameManager : MonoBehaviour
 
     public void InitMenuButtons(Button playButton, Button creditsButton, Button quitButton)
     {
-        Debug.Log("Link Menu !");
         playButton.onClick.RemoveAllListeners();
-        Debug.Log($"//Play Button events Count: {playButton.onClick.GetPersistentEventCount()}");
         playButton.onClick.AddListener(LoadPlayScene);
-        Debug.Log($"//Play Button events Count: {playButton.onClick.GetPersistentEventCount()}");
 
         creditsButton.onClick.RemoveAllListeners();
         creditsButton.onClick.AddListener(LoadCredits);
@@ -63,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     public void InitPauseButtons(Button resumeButton, Button menuButton)
     {
-        Debug.Log("Link Pause !");
         resumeButton.onClick.RemoveAllListeners();
         resumeButton.onClick.AddListener(Resume);
 
@@ -104,7 +100,6 @@ public class GameManager : MonoBehaviour
 
     private void LoadPlayScene()
     {
-        Debug.Log("Load Scene !!!");
         playingGame = true;
         paused = false;
         SceneManager.LoadScene("MainScene");

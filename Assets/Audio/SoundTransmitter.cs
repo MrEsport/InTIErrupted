@@ -21,6 +21,8 @@ public class SoundTransmitter : MonoBehaviour
         public float volume = 0.1f;
         [Range(0f, 2f)]
         public float pitch = 1.0f;
+        [Range(-1f, 1f)]
+        public float pan = 0f;
 
         public bool playOnAwake = false;
         public bool loop = false;
@@ -53,6 +55,8 @@ public class SoundTransmitter : MonoBehaviour
             s.source.volume = s.volume;
             
             s.source.pitch = s.pitch;
+
+            s.source.panStereo= s.pan;
 
             s.source.playOnAwake = s.playOnAwake;
             s.source.loop = s.loop;

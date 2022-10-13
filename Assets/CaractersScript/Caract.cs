@@ -11,8 +11,8 @@ public class Caract : Caracters
     }
 
     // Update is called once per frame
-    void Update()
+    private new void Update()
     {
-        
+        base.Update();
     }
 }
