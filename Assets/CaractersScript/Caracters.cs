@@ -82,6 +82,8 @@ public class Caracters : MonoBehaviour
         _indexWhenNothingSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenSus = Random.Range(0, textData.GetTextWhenSus().Count);
         _indexWhenDetectSomething = Random.Range(0, textData.GetTextWhenDetectSomething().Count);
+
+        SoundTransmitter.Instance.Play("Knock");
         
         StartCoroutine(ComeToRoom());
     }
