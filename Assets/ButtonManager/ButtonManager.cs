@@ -56,6 +56,18 @@ public class ButtonManager : MonoBehaviour
         NoButton = count < 2;
     }
 
+    public List<PushedButton> GetPushedButtons()
+    {
+        List<PushedButton> list = new();
+        for (int i = 0; i < buttons.Count; ++i)
+        {
+            if (!buttons[i].GetButton())
+                continue;
+            list.Add(new PushedButton { button = (EButton)i, count = buttons[i].count });
+        }
+        return list;
+    }
+
     public bool GetWinButton() => winButton.GetButton();
 
     private bool GetButton(EButton button) => buttons[(int)button].GetButton();
