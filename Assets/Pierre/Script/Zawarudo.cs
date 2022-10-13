@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 
 public class Zawarudo : MonoBehaviour
 {
+    public static bool stop = false;
     private float timer = 0;
     private float timerEvent = 0;
     public int waitingTime, aleaMin, aleaMax;
@@ -24,6 +25,9 @@ public class Zawarudo : MonoBehaviour
 
     void Update()
     {
+        if (stop)
+            return;
+
         if (!tokiwotomare)
             timer += Time.deltaTime;
         //chronoCompteur.text = timer.ToString();

@@ -114,53 +114,64 @@ public class Caracters : MonoBehaviour
         Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
 
         ButtonManager.Instance.CheckButtons();
-        
-        if (ButtonManager.Instance.NoButton || ButtonManager.Instance.IsTooMany)
+
+        bool noButton = ButtonManager.Instance.NoButton;
+        bool tooMany = ButtonManager.Instance.IsTooMany;
+
+        if (noButton || tooMany)
             ChangeState(State.Detect);
-        else
-        {
-            List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
 
-            for (int i = 0; i < pushedButtons.Count; i++)
-            {
-                Sprite stateSprite = (pushedButtons[i].count) switch
-                {
-                    1 => iconNormal[(int)pushedButtons[i].button],
-                    2 => iconSus[(int)pushedButtons[i].button],
-                    3 => iconDetect[(int)pushedButtons[i].button],
-                    _ => throw new NotImplementedException()
-                };
-
-                if (i == 0)
-                    icon1.sprite = stateSprite;
-                else
-                    icon2.sprite = stateSprite;
-            }
-        }
-        
         switch (state)
         {
             case State.Detect:
-            {
-                StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
-                Debug.Log("<color=red>Game over</color>");
-                break;
-            }
+                {
+                    StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
+                    Gameover();
+                    break;
+                }
             case State.Normal:
-            {
-                StartCoroutine(SayText(textData.GetTextWhenNothingSus()[_indexWhenNothingSus], delayForSayingSomething));
-                StartCoroutine(Disappear());
-                break;
-            }
+                {
+                    StartCoroutine(SayText(textData.GetTextWhenNothingSus()[_indexWhenNothingSus], delayForSayingSomething));
+                    StartCoroutine(Disappear());
+                    break;
+                }
             case State.Sus:
-            {
-                StartCoroutine(SayText(textData.GetTextWhenSus()[_indexWhenSus], delayForSayingSomething));
-                StartCoroutine(Disappear());
-                break;
-            }
-            
+                {
+                    StartCoroutine(SayText(textData.GetTextWhenSus()[_indexWhenSus], delayForSayingSomething));
+                    StartCoroutine(Disappear());
+                    break;
+                }
+
             default:
                 throw new ArgumentOutOfRangeException();
+        };
+
+        if (ButtonManager.Instance.NoButton)
+            yield break;
+
+        List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
+
+        for (int i = 0; i < pushedButtons.Count; i++)
+        {
+            Sprite stateSprite = (pushedButtons[i].count) switch
+            {
+                1 => iconNormal[(int)pushedButtons[i].button],
+                2 => iconSus[(int)pushedButtons[i].button],
+                3 => iconDetect[(int)pushedButtons[i].button],
+                _ => throw new NotImplementedException()
+            };
+
+            bool showIcon = !tooMany || (tooMany && pushedButtons[i].count > 2);
+            if (i == 0)
+            {
+                icon1.sprite = stateSprite;
+                icon1.gameObject.SetActive(showIcon);
+            }
+            else
+            {
+                icon2.sprite = stateSprite;
+                icon2.gameObject.SetActive(showIcon);
+            }
         }
     }
 
@@ -206,5 +217,11 @@ public class Caracters : MonoBehaviour
         yield return new WaitForSeconds(delay);
         
         Debug.Log(text);
+    }
+
+    private void Gameover()
+    {
+        Debug.Log("<color=red>Game over</color>");
+        Zawarudo.stop = true;
     }
 }

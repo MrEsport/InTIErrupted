@@ -1875,6 +1875,10 @@ PrefabInstance:
       propertyPath: charaCall
       value: 
       objectReference: {fileID: 753595233}
+    - target: {fileID: 3974493964324708013, guid: 4c6f9bf763813e642986fb6626e8e216, type: 3}
+      propertyPath: waitingTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3974493964324708014, guid: 4c6f9bf763813e642986fb6626e8e216, type: 3}
       propertyPath: m_Name
       value: Chrono
