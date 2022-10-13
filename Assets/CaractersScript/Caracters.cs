@@ -23,6 +23,10 @@ public class Caracters : MonoBehaviour
 
     [SerializeField] 
     private bool isCat;
+
+    [Header("Sprites")]
+    [SerializeField]
+    private List<Sprite> familyMembers = new List<Sprite>();
     
     public enum State
     {
