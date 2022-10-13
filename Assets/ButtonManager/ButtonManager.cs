@@ -29,8 +29,11 @@ public class ButtonManager : MonoBehaviour
     {
         if (Instance)
             Destroy(gameObject);
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     // Update is called once per frame
