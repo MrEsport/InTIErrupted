@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01536bbf516b48478f22ea0930c3e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuPause: {fileID: 0}
-  creditSceneName: Credit
+  resumeButton: {fileID: 0}
+  menuButton: {fileID: 0}
