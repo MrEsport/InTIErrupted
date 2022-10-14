@@ -58,6 +58,17 @@ public class GameManager : MonoBehaviour
         playingGame = false;
     }
 
+    public void InitGameOverButtons(Button retryButton, Button quitButton)
+    {
+        retryButton.onClick.RemoveAllListeners();
+        retryButton.onClick.AddListener(LoadPlayScene);
+
+        quitButton.onClick.RemoveAllListeners();
+        quitButton.onClick.AddListener(Quit);
+
+        playingGame = false;
+    }
+
     public void InitPauseButtons(Button resumeButton, Button menuButton)
     {
         resumeButton.onClick.RemoveAllListeners();
@@ -98,7 +109,7 @@ public class GameManager : MonoBehaviour
         endingGame = true;
     }
 
-    private void LoadPlayScene()
+    public void LoadPlayScene()
     {
         playingGame = true;
         paused = false;
@@ -129,5 +140,10 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 }
