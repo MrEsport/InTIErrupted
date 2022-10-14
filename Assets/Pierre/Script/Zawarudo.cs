@@ -22,6 +22,7 @@ public class Zawarudo : MonoBehaviour
     {
         timerEvent = Random.Range(aleaMin, aleaMax);
         characters = charaCall.GetComponent<Caracters>();
+        stop = false;
     }
 
     void Update()
