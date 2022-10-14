@@ -8,6 +8,7 @@ public class Caract : Caracters
     private new void Start()
     {
         base.Start();
+        ButtonManager.Instance.caract = this;
     }
 
     // Update is called once per frame
