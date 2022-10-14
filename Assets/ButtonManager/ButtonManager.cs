@@ -7,6 +7,8 @@ public class ButtonManager : MonoBehaviour
     private static ButtonManager _instance = null;
     public static ButtonManager Instance { get { return _instance; } }
 
+    public Caract caract;
+
     public bool NoButton { get; set; }
     public bool IsTooMany
     {
@@ -44,6 +46,8 @@ public class ButtonManager : MonoBehaviour
 
     public void CheckButtons()
     {
+        if (caract.IsCat()) return;
+        
         int count = 0;
         for (int i = 0; i < buttons.Count; ++i)
         {

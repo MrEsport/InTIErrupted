@@ -142,7 +142,6 @@ public class Caracters : MonoBehaviour
             case State.Detect:
                 {
                     StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
-                    Gameover();
                     break;
                 }
             case State.Normal:
@@ -164,7 +163,7 @@ public class Caracters : MonoBehaviour
 
         if (ButtonManager.Instance.NoButton)
             yield break;
-
+        
         List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
 
         for (int i = 0; i < pushedButtons.Count; i++)
@@ -193,7 +192,11 @@ public class Caracters : MonoBehaviour
 
     private void ShowIntruder()
     {
-        interrupterSprite.sprite = familySprites[Random.Range(0, familySprites.Count)];
+        int randomMember = Random.Range(0, familySprites.Count);
+
+        isCat = randomMember == 0;
+        
+        interrupterSprite.sprite = familySprites[randomMember];
 
         interrupterTransform.gameObject.SetActive(true);
     }
@@ -205,6 +208,8 @@ public class Caracters : MonoBehaviour
 
     private void ShowIcons()
     {
+        if (isCat) return;
+        
         bubble.gameObject.SetActive(true);
         icon1.gameObject.SetActive(true);
         icon2.gameObject.SetActive(true);
@@ -234,12 +239,6 @@ public class Caracters : MonoBehaviour
         yield return new WaitForSeconds(delay);
         
         Debug.Log(text);
-    }
-
-    private void Gameover()
-    {
-        Debug.Log("<color=red>Game over</color>");
-        Zawarudo.stop = true;
     }
 
     // Doors logic

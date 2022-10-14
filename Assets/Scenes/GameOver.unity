@@ -153,15 +153,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
-  - name: Chair
+  - group: 0
+    count: 0
     keys: 0801000002010000
-  - name: Lamp
+  - group: 0
+    count: 0
     keys: 6c000000
-  - name: Yoga
+  - group: 0
+    count: 0
     keys: 140100001301000011010000
-  chair: {fileID: 1665797199}
-  lamp: {fileID: 216783063}
-  yoga: {fileID: 1878539372}
+  winButton:
+    group: 0
+    count: 0
+    keys: 
 --- !u!4 &2398096
 Transform:
   m_ObjectHideFlags: 0

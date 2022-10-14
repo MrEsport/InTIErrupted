@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
+      propertyPath: caract
+      value: 
+      objectReference: {fileID: 753595234}
     - target: {fileID: 345043822832953651, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
       propertyPath: m_Name
       value: ButtonManager
@@ -983,6 +987,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: familySprites.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: partSprite.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 5f6b82ad6ec867241838095061f3afb6, type: 3}
@@ -990,6 +998,26 @@ PrefabInstance:
       propertyPath: partSprite.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 2e6cb2c4439590d4d9cfb5f3f5813501, type: 3}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: familySprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -1378407079, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: familySprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 181048107, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: familySprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -2110349994, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: familySprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -2110349994, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
+    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+      propertyPath: familySprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 181048107, guid: 439a6d8a38931ac49819a88b35b648a8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
 --- !u!1 &753595233 stripped
@@ -997,6 +1025,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5362899592362289913, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
   m_PrefabInstance: {fileID: 753595231}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &753595234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
+  m_PrefabInstance: {fileID: 753595231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753595233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add608e2fb51dc7468dc7eb3d68e487a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &807960107
 PrefabInstance:
   m_ObjectHideFlags: 0
