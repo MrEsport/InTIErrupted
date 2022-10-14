@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
         // Derniers appels avant Fin : Animation ? Timer ?
 
-        //if (endingGame) return;
+        if (endingGame) return;
 
         if (ButtonManager.Instance.GetWinButton())
             KeysWin();

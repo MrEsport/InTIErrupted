@@ -53,8 +53,8 @@ MonoBehaviour:
     keys: 6c000000
   - group: 2
     count: 0
-    keys: 140100001301000011010000
+    keys: 1401000013010000
   winButton:
     group: -1
     count: 2
-    keys: 080000001b000000
+    keys: 0f010000

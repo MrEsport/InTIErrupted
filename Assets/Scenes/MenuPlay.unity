@@ -688,46 +688,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4589634825821367616, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825821367616, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.365
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.365
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 310
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 810
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589634825882273704, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8177414298890343248, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
       propertyPath: m_Name
       value: MenuPlay
@@ -839,6 +799,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6508208304147685207, guid: 88a8e348d80e98a4ba044cbd82f66216, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a8e348d80e98a4ba044cbd82f66216, type: 3}
