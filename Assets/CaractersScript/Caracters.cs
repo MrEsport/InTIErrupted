@@ -142,6 +142,7 @@ public class Caracters : MonoBehaviour
             case State.Detect:
                 {
                     StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
+                    GameOver();
                     break;
                 }
             case State.Normal:
@@ -239,6 +240,13 @@ public class Caracters : MonoBehaviour
         yield return new WaitForSeconds(delay);
         
         Debug.Log(text);
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("<color=red>Game over</color>");
+        GameManager.Instance.GameOver();
+        Zawarudo.stop = true;
     }
 
     // Doors logic
