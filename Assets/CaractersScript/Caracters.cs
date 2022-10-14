@@ -121,9 +121,9 @@ public class Caracters : MonoBehaviour
     {
         // delay after knocking
         yield return new WaitForSeconds(delay);
-
         ShowIntruder();
-        
+        SoundTransmitter.Instance.Play("DoorOpen");
+
         yield return new WaitForSeconds(delayForSayingSomething);
         ShowIcons();
 
@@ -224,6 +224,7 @@ public class Caracters : MonoBehaviour
 
         HideIcons();
         HideIntruder();
+        SoundTransmitter.Instance.Play("DoorClose");
 
         StopAllCoroutines();
     }
@@ -238,7 +239,7 @@ public class Caracters : MonoBehaviour
     private void Gameover()
     {
         Debug.Log("<color=red>Game over</color>");
-        //Zawarudo.stop = true;
+        Zawarudo.stop = true;
     }
 
     // Doors logic
