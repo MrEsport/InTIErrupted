@@ -199,11 +199,17 @@ public class Caracters : MonoBehaviour
         
         interrupterSprite.sprite = familySprites[randomMember];
 
+        if (interrupterSprite.sprite.name == "characters_3")
+        {
+            interrupterSprite.gameObject.transform.position = new Vector3(interrupterSprite.gameObject.transform.position.x, interrupterSprite.gameObject.transform.position.y + 218.6f, interrupterSprite.gameObject.transform.position.z);
+        }
+
         interrupterTransform.gameObject.SetActive(true);
     }
 
     private void HideIntruder()
     {
+        interrupterSprite.gameObject.transform.position = new Vector3(interrupterSprite.gameObject.transform.position.x, - 220.6f, interrupterSprite.gameObject.transform.position.z);
         interrupterTransform.gameObject.SetActive(false);
     }
 
@@ -260,6 +266,12 @@ public class Caracters : MonoBehaviour
 
         ParticleSystem ps = Instantiate(particles, door);
         ps.transform.forward = door.forward * (left ? -1 : 1);
+        // 264-268 : Remettre le knock FX à la bonne place. Code un peu dégueu de Clément sans doute à revoir pour rendre ça plus sympa si on doit apporter des modifications à la scène.
+        if (left){
+            ps.transform.position = new Vector3(ps.transform.position.x + 180, ps.transform.position.y, ps.transform.position.z + 50);
+        } else if (!left){
+            ps.transform.position = new Vector3(ps.transform.position.x - 180, ps.transform.position.y, ps.transform.position.z + 50);
+        }
         ps.textureSheetAnimation.SetSprite(0, partSprite[left ? 0 : 1]);
 
         for (int i = 0; i < 3; ++i)
