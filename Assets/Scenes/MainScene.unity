@@ -1096,26 +1096,6 @@ PrefabInstance:
       propertyPath: caract
       value: 
       objectReference: {fileID: 753595234}
-    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
-      propertyPath: buttons.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
-      propertyPath: buttons.Array.data[3].group
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
-      propertyPath: buttons.Array.data[3].keys.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
-      propertyPath: buttons.Array.data[3].keys.Array.data[0]
-      value: 273
-      objectReference: {fileID: 0}
-    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
-      propertyPath: buttons.Array.data[3].keys.Array.data[1]
-      value: 275
-      objectReference: {fileID: 0}
     - target: {fileID: 345043822832953651, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
       propertyPath: m_Name
       value: ButtonManager
@@ -2265,7 +2245,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1852856892}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 3, z: 0}
 --- !u!65 &658210342
 BoxCollider:
@@ -3044,10 +3024,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1328089150}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
-      propertyPath: iconSus.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: doors.Array.data[0]
       value: 
       objectReference: {fileID: 873092057}
@@ -3060,18 +3036,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1328089151}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
-      propertyPath: iconDetect.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
-      propertyPath: iconNormal.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
-      propertyPath: iconSus.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 50f2ecd783affa140a2af37b55cd6c16, type: 3}
-    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: partSprite.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3079,14 +3043,6 @@ PrefabInstance:
       propertyPath: familySprites.Array.size
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
-      propertyPath: iconDetect.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: f5c8deba68966c34786ef4439aa6369d, type: 3}
-    - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
-      propertyPath: iconNormal.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 20a77a6803d594c43b0019f3de76f4e0, type: 3}
     - target: {fileID: 5362899592362289915, guid: 831a519b0b5c1ca4ca6eb1138b448a01, type: 3}
       propertyPath: partSprite.Array.data[0]
       value: 
@@ -3335,7 +3291,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1852856892}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 3, z: 0}
 --- !u!65 &827045812
 BoxCollider:
@@ -6118,11 +6074,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 873092057}
-  - {fileID: 658210341}
-  - {fileID: 827045811}
   - {fileID: 1280036925}
   - {fileID: 2098741613}
   - {fileID: 526416680}
+  - {fileID: 658210341}
+  - {fileID: 827045811}
   - {fileID: 873558424}
   m_Father: {fileID: 2099540104}
   m_RootOrder: 0
