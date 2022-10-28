@@ -1,3 +1,4 @@
+
 using System;
 
 [Serializable]
@@ -7,5 +8,5 @@ public enum EButton
     LAMP = 1,
     YOGA_MAT = 2,
 
-    KEYS = -1
+    KEYS = 2
 }

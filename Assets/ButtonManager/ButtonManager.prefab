@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f863f093b423a8849b19ee1e24297db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  caract: {fileID: 0}
   buttons:
   - group: 0
     count: 0
@@ -57,4 +58,4 @@ MonoBehaviour:
   winButton:
     group: -1
     count: 2
-    keys: 0f010000
+    keys: 6b00000064000000
