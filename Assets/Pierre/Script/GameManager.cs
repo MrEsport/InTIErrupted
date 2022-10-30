@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Clés trouvées.. Porte fermées... (¬ v ¬)\nGAME OVER");
         endingGame = true;
+        Zawarudo.stop = true;
+        SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
     }
 
     public void LoadPlayScene()
