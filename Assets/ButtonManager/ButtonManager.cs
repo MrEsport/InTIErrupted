@@ -24,7 +24,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private List<IRLButton> buttons;
+    [SerializeField] public List<IRLButton> buttons;
     [SerializeField] private IRLButton winButton;
 
     private void Awake()

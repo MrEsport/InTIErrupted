@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     public void InitGameOverButtons(Button retryButton, Button quitButton)
     {
         retryButton.onClick.RemoveAllListeners();
-        retryButton.onClick.AddListener(LoadPlayScene);
+        retryButton.onClick.AddListener(LoadMenuScene);
 
         quitButton.onClick.RemoveAllListeners();
         quitButton.onClick.AddListener(Quit);
@@ -113,12 +113,20 @@ public class GameManager : MonoBehaviour
 
     public void LoadPlayScene()
     {
+        for (int i = 0; i < 3; i++) //Longueur hardocdée, à modifier si un objet a été ajouté au pool des alibis
+        {
+            ButtonManager.Instance.buttons[i].count = 0;
+        };
         playingGame = true;
         paused = false;
         SceneManager.LoadScene("MainScene");
     }
     private void LoadMenuScene()
     {
+        for (int i = 0; i < 3; i++) //Longueur hardocdée, à modifier si un objet a été ajouté au pool des alibis
+        {
+            ButtonManager.Instance.buttons[i].count = 0;
+        };
         playingGame = false;
         SceneManager.LoadScene("MenuPlay");
     }
