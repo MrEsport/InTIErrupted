@@ -25,7 +25,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     [SerializeField] public List<IRLButton> buttons;
-    [SerializeField] private IRLButton winButton;
+    [SerializeField] public IRLButton winButton;
 
     private void Awake()
     {
@@ -52,7 +52,20 @@ public class ButtonManager : MonoBehaviour
         for (int i = 0; i < buttons.Count; ++i)
         {
             IRLButton b = buttons[i];
-            if (GetButton(b.group))
+          //  Debug.Log(b.group.ToString());
+           // Debug.Log(b.GetButton().ToString());
+
+          /*  if (i == 3)
+            {
+              
+                  Debug.Log(b.GetButton().ToString());
+            } */
+
+            if (GetButton(b.group) && i!=3) // Incrementation des alibis sauf le book
+            {              
+                b.Increment();
+                ++count;
+            } else if (!GetButton(b.group) && i == 3) // Incrementation du book seulement
             {
                 b.Increment();
                 ++count;
@@ -68,7 +81,7 @@ public class ButtonManager : MonoBehaviour
         List<PushedButton> list = new();
         for (int i = 0; i < buttons.Count; ++i)
         {
-            if (!buttons[i].GetButton())
+            if ((!buttons[i].GetButton() && i!=3) || (buttons[i].GetButton() && i == 3)) // on détecte quel bouton est appuyé et on passe si ce n'est pas le cas, avec prise en compte de l'ailibi book inversé
                 continue;
             list.Add(new PushedButton { button = (EButton)i, count = buttons[i].count });
         }

@@ -1150,6 +1150,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 753595234}
     - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
+      propertyPath: winButton.count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345043822832953650, guid: d24c089ef6c359b48b62125c8461bb2b, type: 3}
       propertyPath: buttons.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1736,6 +1740,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9edf56a523c03bd47aa79f7575ea13b3, type: 3}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: MoanMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[5].audioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
     - target: {fileID: 1316951866739554198, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: m_RootOrder
       value: 9

@@ -113,20 +113,22 @@ public class GameManager : MonoBehaviour
 
     public void LoadPlayScene()
     {
-        for (int i = 0; i < 3; i++) //Longueur hardocdée, à modifier si un objet a été ajouté au pool des alibis
+        for (int i = 0; i < 4; i++) //Longueur hardocdée, à modifier si un objet a été ajouté au pool des alibis
         {
             ButtonManager.Instance.buttons[i].count = 0;
         };
+        endingGame = false;
         playingGame = true;
         paused = false;
         SceneManager.LoadScene("MainScene");
     }
     private void LoadMenuScene()
     {
-        for (int i = 0; i < 3; i++) //Longueur hardocdée, à modifier si un objet a été ajouté au pool des alibis
+        for (int i = 0; i < 4; i++) //Longueur hardocdée, à modifier si un objet a été ajouté au pool des alibis
         {
             ButtonManager.Instance.buttons[i].count = 0;
         };
+        endingGame = false;
         playingGame = false;
         SceneManager.LoadScene("MenuPlay");
     }
