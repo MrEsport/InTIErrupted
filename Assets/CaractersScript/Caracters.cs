@@ -283,7 +283,7 @@ using MilkShake;
 
             Transform door = doors[left ? 0 : 1];
 
-            yield return new WaitForSeconds(.15f);
+            yield return new WaitForSeconds(.2f);
 
             ParticleSystem ps = Instantiate(particles, door);
             ps.transform.forward = door.forward * (left ? -1 : 1);
@@ -293,12 +293,12 @@ using MilkShake;
             // 280-287 : Remettre le knock FX à la bonne place. Code un peu dégueu de Clément sans doute à revoir pour rendre ça plus sympa si on doit apporter des modifications à la scène.
             if (left)
             {
-                ps.transform.position = new Vector3(ps.transform.position.x + 180, ps.transform.position.y, ps.transform.position.z + 50);
+                ps.transform.position = new Vector3(ps.transform.position.x + 125, ps.transform.position.y +134, ps.transform.position.z - 160); // Ok c'est hardcodé et jsp pourquoi mais le moteur oinverse le x et le z je crois je bite R
                 doorsGO[0].gameObject.GetComponent<Animator>().SetBool("IsKnocked", true);
             }
             else if (!left)
             {
-                ps.transform.position = new Vector3(ps.transform.position.x - 180, ps.transform.position.y, ps.transform.position.z + 50);
+                ps.transform.position = new Vector3(ps.transform.position.x - 125, ps.transform.position.y +134, ps.transform.position.z -160);
                 doorsGO[1].gameObject.GetComponent<Animator>().SetBool("IsKnocked", true);
             }
             ps.textureSheetAnimation.SetSprite(0, partSprite[left ? 0 : 1]);
@@ -306,7 +306,8 @@ using MilkShake;
             for (int i = 0; i < 3; ++i)
             {
                 ps.Play();
-                yield return new WaitForSeconds(.4f);
+            Debug.Log("1 knock");
+                yield return new WaitForSeconds(0.5f);
             }
 
             Destroy(ps.gameObject);
