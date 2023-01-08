@@ -199,7 +199,8 @@ using MilkShake;
                     icon2.gameObject.SetActive(showIcon);
                 }
             }
-        }
+      //  interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", true);
+    }
 
         private void ShowIntruder()
         {
@@ -212,10 +213,10 @@ using MilkShake;
 
             interrupterSprite.sprite = familySprites[randomMember];
 
-            if (interrupterSprite.sprite.name == "characters_3")
+          /*  if (interrupterSprite.sprite.name == "characters_3")
             {
                 interrupterSprite.gameObject.transform.position = new Vector3(interrupterSprite.gameObject.transform.position.x, interrupterSprite.gameObject.transform.position.y + 218.6f, interrupterSprite.gameObject.transform.position.z);
-            }
+            } */
 
             interrupterTransform.gameObject.SetActive(true);
 
@@ -231,7 +232,8 @@ using MilkShake;
             //Close door
             doorsGO[0].gameObject.GetComponent<Animator>().SetBool("IsOpened", true);
             doorsGO[1].gameObject.GetComponent<Animator>().SetBool("IsOpened", true);
-
+        Debug.Log("Closing Doors. Now leaving the room.");
+      //  interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", true);
     }
 
         private void ShowIcons()
@@ -253,20 +255,21 @@ using MilkShake;
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator Disappear()
         {
-            yield return new WaitForSeconds(delayToDisappear);
-
-            HideIcons();
+        yield return new WaitForSeconds(delayToDisappear);
+        interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", true);
+        yield return new WaitForSeconds(0.8f);
+        HideIcons();
             HideIntruder();
             SoundTransmitter.Instance.Play("DoorClose");
-
-            StopAllCoroutines();
+      //  interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", false);
+        StopAllCoroutines();
         }
 
         private IEnumerator SayText(string text, float delay)
         {
             yield return new WaitForSeconds(delay);
-
-            Debug.Log(text);
+       // interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", true);
+        Debug.Log(text);
         }
 
         private void GameOver()
@@ -306,7 +309,7 @@ using MilkShake;
             for (int i = 0; i < 3; ++i)
             {
                 ps.Play();
-            Debug.Log("1 knock");
+           // Debug.Log("1 knock");
                 yield return new WaitForSeconds(0.5f);
             }
 
