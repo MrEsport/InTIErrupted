@@ -262,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playingVideo: {fileID: 925302477}
   canvas: {fileID: 137166337}
+  SoundManager: {fileID: 1949912859}
   video:
   - {fileID: 32900000, guid: e98d89d4a0037a046a25a2d57e542e87, type: 3}
   - {fileID: 32900000, guid: 2f0aae0dbfd108a4fb7a5a71424310d4, type: 3}
@@ -623,7 +624,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0.05
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -879,6 +880,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a3147db74e9d2646b718b49ddb3338b, type: 3}
+--- !u!1 &1949912859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7219779472928250022, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+  m_PrefabInstance: {fileID: 598444595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4589634826258914764
 PrefabInstance:
   m_ObjectHideFlags: 0

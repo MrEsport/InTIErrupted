@@ -7,11 +7,12 @@ public class WaitingVideoMenu : MonoBehaviour
 
     public GameObject playingVideo;
     public GameObject canvas;
+    public GameObject SoundManager;
 
-    // public GameObject[] video;
     public List<UnityEngine.Video.VideoClip> video;
 
-    private bool MainMenuMode = false;  //false = main menu / true = video mode
+    private bool MainMenuMode = false;  // false = main menu | true = video mode
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class WaitingVideoMenu : MonoBehaviour
             {
                 playingVideo.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
                 canvas.SetActive(true);
+                SoundManager.SetActive(true);
 
                 MainMenuMode = !MainMenuMode;
             }
@@ -42,6 +44,7 @@ public class WaitingVideoMenu : MonoBehaviour
                 playingVideo.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>().clip = video[nbAlea];
                     playingVideo.gameObject.GetComponent<UnityEngine.Video.VideoPlayer>().Play();
                     canvas.SetActive(false);
+                SoundManager.SetActive(false);
 
                 MainMenuMode = !MainMenuMode;
             }
