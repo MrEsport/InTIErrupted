@@ -6,7 +6,7 @@ public class LampScript : MonoBehaviour
 {
 
     public GameObject lamp;
-
+    public GameObject exclamation;
     // Start is called before the first frame update
     void Start()
     {

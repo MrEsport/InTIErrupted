@@ -16,7 +16,7 @@ using MilkShake;
         [SerializeField]
         private Camera mainCamera;
         [SerializeField]
-        private ShakePreset ShakeSettings;
+        public ShakePreset ShakeSettings;
 
         [Header("Event Delays")]
         [SerializeField]
@@ -39,11 +39,11 @@ using MilkShake;
 
         [Header("Icons")]
         [SerializeField]
-        private SpriteRenderer bubble;
+        public SpriteRenderer bubble;
         [SerializeField]
-        private SpriteRenderer icon1;
+        public SpriteRenderer icon1;
         [SerializeField]
-        private SpriteRenderer icon2;
+        public SpriteRenderer icon2;
 
         public enum State
         {
@@ -154,7 +154,7 @@ using MilkShake;
                 case State.Detect:
                     {
                         StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
-                        GameOver();
+                    GameOver();
                         break;
                     }
                 case State.Normal:
@@ -262,8 +262,10 @@ using MilkShake;
         yield return new WaitForSeconds(0.8f);
         HideIcons();
             HideIntruder();
-            SoundTransmitter.Instance.Play("DoorClose");
-      //  interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", false);
+        SoundTransmitter.Instance.Stop("SusMusic");
+        SoundTransmitter.Instance.Play("DoorClose");
+        SoundTransmitter.Instance.Play("Music");
+        //  interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", false);
         StopAllCoroutines();
         }
 
@@ -277,7 +279,8 @@ using MilkShake;
         private void GameOver()
         {
             Debug.Log("<color=red>Game over</color>");
-            GameManager.Instance.GameOver();
+        
+        GameManager.Instance.GameOver();
             Zawarudo.stop = true;
         }
 
@@ -290,7 +293,8 @@ using MilkShake;
             Transform door = doors[left ? 0 : 1];
 
             yield return new WaitForSeconds(.2f);
-        SoundTransmitter.Instance.Stop("Music");
+        SoundTransmitter.Instance.Pause("Music");
+        SoundTransmitter.Instance.Play("Scratch");
         ParticleSystem ps = Instantiate(particles, door);
             ps.transform.forward = door.forward * (left ? -1 : 1);
             // Reset a parametters in door's animator
@@ -317,6 +321,6 @@ using MilkShake;
             }
 
             Destroy(ps.gameObject);
-        SoundTransmitter.Instance.Play("Music");
+        SoundTransmitter.Instance.Play("SusMusic");
     }
     }

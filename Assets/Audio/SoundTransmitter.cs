@@ -85,6 +85,12 @@ public class SoundTransmitter : MonoBehaviour
         s.source.Stop();
     }
 
+    public void Pause(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Pause();
+    }
+
     public void StopAll()
     {
         foreach (Sound s in sounds)

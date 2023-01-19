@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
         };
         endingGame = false;
         playingGame = false;
+        SoundTransmitter.Instance.Play("Music");
         SceneManager.LoadScene("MenuPlay");
     }
     private void LoadCredits() {}
@@ -156,6 +157,28 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+
+        SoundTransmitter.Instance.Play("Alert");
+        SoundTransmitter.Instance.Stop("Music");
+        SoundTransmitter.Instance.Stop("SusMusic");
+
+       /* GameObject bubble;
+        GameObject icon1;
+        GameObject icon2;
+        bubble = GameObject.Find("Chara").gameObject.GetComponent<Caracters>().bubble.gameObject;
+        icon1 = GameObject.Find("Chara").gameObject.GetComponent<Caracters>().icon1.gameObject;
+        icon2 = GameObject.Find("Chara").gameObject.GetComponent<Caracters>().icon2.gameObject;
+
+        bubble.gameObject.SetActive(false);
+        icon1.gameObject.SetActive(false);
+        icon2.gameObject.SetActive(false); */
+
+        GameObject tempExcla;
+        tempExcla = GameObject.Find("CameraHolder").gameObject.GetComponent<LampScript>().exclamation.gameObject;
+
+        tempExcla.gameObject.SetActive(true);
+        
+        // SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+
     }
 }
