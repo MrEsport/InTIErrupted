@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class WaitingVideoMenu : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class WaitingVideoMenu : MonoBehaviour
     public GameObject playingVideo;
     public GameObject canvas;
     public GameObject SoundManager;
+    public string[] guids2;
+    public AudioClip[] moansAudio;
 
     public List<UnityEngine.Video.VideoClip> video;
 
@@ -18,6 +21,7 @@ public class WaitingVideoMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -26,7 +30,7 @@ public class WaitingVideoMenu : MonoBehaviour
 
         if (!hasWait && !MainMenuMode) {
             StartCoroutine(Waiting());
-            Debug.Log("Si ce message est envoyé plusieurs fois, alors ça bug.");
+           // Debug.Log("Si ce message est envoyé plusieurs fois, alors ça bug.");
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -92,7 +96,7 @@ public class WaitingVideoMenu : MonoBehaviour
 
         IEnumerator Waiting()
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(120f);
             hasWait=true;
         }
 

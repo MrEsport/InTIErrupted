@@ -263,6 +263,8 @@ MonoBehaviour:
   playingVideo: {fileID: 925302477}
   canvas: {fileID: 137166337}
   SoundManager: {fileID: 1949912859}
+  guids2: []
+  moansAudio: []
   video:
   - {fileID: 32900000, guid: e98d89d4a0037a046a25a2d57e542e87, type: 3}
   - {fileID: 32900000, guid: 2f0aae0dbfd108a4fb7a5a71424310d4, type: 3}
@@ -501,7 +503,7 @@ PrefabInstance:
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9edf56a523c03bd47aa79f7575ea13b3, type: 3}
+      objectReference: {fileID: 8300000, guid: 50ab9ca4457a9734b8d7c5e267385cca, type: 3}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[5].name
       value: MoanMenu
@@ -564,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[5].volume
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[6].volume

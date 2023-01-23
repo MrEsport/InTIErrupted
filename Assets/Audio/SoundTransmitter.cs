@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEditor;
 
 public class SoundTransmitter : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class SoundTransmitter : MonoBehaviour
     
     public Sound[] sounds;
 
+    private string[] guids2;
+    public AudioClip[] moansAudio;
+    private string oldMoan;
+
     void Awake()
     {
         if (Instance)
@@ -63,6 +68,16 @@ public class SoundTransmitter : MonoBehaviour
             
             if(s.playOnAwake) Play(s.name);
         }
+        guids2 = AssetDatabase.FindAssets("t:AudioClip", new[] { "Assets/Sound/Moans" });
+        moansAudio = new AudioClip[guids2.Length];
+        int i = 0;
+        foreach (string guid2 in guids2)
+        {
+            Debug.Log(AssetDatabase.GUIDToAssetPath(guid2));
+            moansAudio[i] = (AudioClip)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid2), typeof(AudioClip));
+            i++;
+        }
+        oldMoan = "BaseMoan";
     }
 
     public void Play(string name)
@@ -97,5 +112,30 @@ public class SoundTransmitter : MonoBehaviour
         {
             s.source.Stop();
         }
+    }
+
+    public void ChangeMoan()
+    {
+        AudioSource[] audioS;
+        audioS = GetComponents<AudioSource>();
+        foreach (Sound s in sounds)
+          {
+
+             if (s.source.clip.name == oldMoan)
+               {
+                   int rndMoan;
+                   rndMoan = Random.Range(0, moansAudio.Length);
+                 audioS[5].clip = moansAudio[rndMoan];
+                 // Debug.Log(sounds.Length);
+                 s.clip = moansAudio[rndMoan];
+                   Debug.Log("Moan changed!");
+                oldMoan = s.source.clip.name;
+                // Debug.Log("TEST" + audioS[5].clip.name);
+
+               }
+             // Debug.Log(s.name); 
+
+        } 
+
     }
 }
