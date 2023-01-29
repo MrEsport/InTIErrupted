@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using MilkShake;
+using UnityEngine.Rendering;
 
     public class Caracters : MonoBehaviour
     {
@@ -14,11 +15,15 @@ using MilkShake;
 
         [Header("Camera")]
         [SerializeField]
-        private Camera mainCamera;
+        public Camera mainCamera;
         [SerializeField]
         public ShakePreset ShakeSettings;
+    [SerializeField]
+    public VolumeProfile gamePPVolume;
+    [SerializeField]
+    public VolumeProfile orgasmPPVolume;
 
-        [Header("Event Delays")]
+    [Header("Event Delays")]
         [SerializeField]
         private float delay = 5;
         [SerializeField]
@@ -282,6 +287,7 @@ using MilkShake;
         
         GameManager.Instance.GameOver();
             Zawarudo.stop = true;
+        
         }
 
         // Doors logic

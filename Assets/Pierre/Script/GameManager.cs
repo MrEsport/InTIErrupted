@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -108,8 +109,22 @@ public class GameManager : MonoBehaviour
         Debug.Log("Clés trouvées.. Porte fermées... (¬ v ¬)\nGAME OVER");
         endingGame = true;
         Zawarudo.stop = true;
-        SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+        SoundTransmitter.Instance.Stop("Music");
+        SoundTransmitter.Instance.Play("HeartBeat");
+        GameObject tempVol;
+        tempVol = GameObject.Find("Chara").gameObject;
+       // tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().orgasmPPVolume;
+      //      StartCoroutine(LaunchVictory(tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>()));
+         tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>().SetBool("Flashing", true);
+      // SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+
     }
+
+ /*   public IEnumerator LaunchVictory(Animator anim)
+    {
+        yield return new WaitForSeconds(3f);
+        anim.SetBool("Flashing", true);
+    } */
 
     public void LoadPlayScene()
     {
@@ -162,23 +177,10 @@ public class GameManager : MonoBehaviour
         SoundTransmitter.Instance.Stop("Music");
         SoundTransmitter.Instance.Stop("SusMusic");
 
-       /* GameObject bubble;
-        GameObject icon1;
-        GameObject icon2;
-        bubble = GameObject.Find("Chara").gameObject.GetComponent<Caracters>().bubble.gameObject;
-        icon1 = GameObject.Find("Chara").gameObject.GetComponent<Caracters>().icon1.gameObject;
-        icon2 = GameObject.Find("Chara").gameObject.GetComponent<Caracters>().icon2.gameObject;
-
-        bubble.gameObject.SetActive(false);
-        icon1.gameObject.SetActive(false);
-        icon2.gameObject.SetActive(false); */
-
         GameObject tempExcla;
         tempExcla = GameObject.Find("CameraHolder").gameObject.GetComponent<LampScript>().exclamation.gameObject;
 
         tempExcla.gameObject.SetActive(true);
-        
-        // SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
 
     }
 }

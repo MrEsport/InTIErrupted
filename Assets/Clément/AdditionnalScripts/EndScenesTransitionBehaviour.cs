@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using MilkShake;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class EndScenesTransitionBehaviour : MonoBehaviour
 {
 
     public GameObject UI;
     public GameObject character;
+
+    private bool toggleVol = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,5 +65,65 @@ public class EndScenesTransitionBehaviour : MonoBehaviour
       //  SoundTransmitter.Instance.Play("Defeat");
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
+
+    public void TransitionVictory()
+    {
+          character.gameObject.SetActive(false); 
+        
+        GameObject tempVol;
+        tempVol = GameObject.Find("Chara").gameObject;
+        tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().gamePPVolume;
+        tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>().SetBool("Flashing", false);
+        tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().gamePPVolume;
+        ChangePPVolume();
+        
+        SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+
+        
+
+
+    }
+
+    public void ChangePPVolume()
+    {
+        GameObject tempVol;
+        tempVol = GameObject.Find("Chara").gameObject;
+
+        if (!toggleVol)
+        {
+            tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().orgasmPPVolume;
+        }
+        else if (toggleVol)
+        {
+            tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().gamePPVolume;
+        }
+
+        toggleVol = !toggleVol;
+        Debug.Log("VOLUME CHANGED");
+    }
+
+    public void MoaningEnd()
+    {
+        GameObject tempSM;
+        tempSM = GameObject.Find("SoundManager").gameObject;
+        tempSM.GetComponent<SoundTransmitter>().ChangeMoanEnd();
+
+        GameObject tempAH;
+        tempAH = GameObject.Find("Canvas/AH").gameObject;
+
+        // tempAH.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        tempAH.gameObject.GetComponent<Image>().enabled = true;
+        tempAH.gameObject.GetComponent<Animator>().enabled = true;
+
+        SoundTransmitter.Instance.Play("MoanEnd");
+      //  UI.gameObject.SetActive(true);
+
+    }
+
+    IEnumerator Attente(float f)
+    {
+        yield return new WaitForSeconds(f);
+    }
+
 
 }

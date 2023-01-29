@@ -41,6 +41,10 @@ public class SoundTransmitter : MonoBehaviour
     public AudioClip[] moansAudio;
     private string oldMoan;
 
+    private string[] guids;
+    public AudioClip[] moansAudioEnd;
+    private string oldMoanEnd;
+
     void Awake()
     {
         if (Instance)
@@ -78,6 +82,18 @@ public class SoundTransmitter : MonoBehaviour
             i++;
         }
         oldMoan = "BaseMoan";
+
+        guids = AssetDatabase.FindAssets("t:AudioClip", new[] { "Assets/Sound/MoanEnd" });
+        moansAudioEnd = new AudioClip[guids.Length];
+        int y = 0;
+        foreach (string guid in guids)
+        {
+            Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
+            moansAudioEnd[y] = (AudioClip)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(AudioClip));
+            y++;
+        }
+        oldMoanEnd = "BaseMoanEnd";
+
     }
 
     public void Play(string name)
@@ -136,6 +152,31 @@ public class SoundTransmitter : MonoBehaviour
              // Debug.Log(s.name); 
 
         } 
+
+    }
+
+    public void ChangeMoanEnd()
+    {
+        AudioSource[] audioS;
+        audioS = GetComponents<AudioSource>();
+        foreach (Sound s in sounds)
+        {
+
+            if (s.source.clip.name == oldMoanEnd)
+            {
+                int rndMoan;
+                rndMoan = Random.Range(0, moansAudioEnd.Length);
+                audioS[11].clip = moansAudioEnd[rndMoan];
+                // Debug.Log(sounds.Length);
+                s.clip = moansAudioEnd[rndMoan];
+                Debug.Log("Moan end changed!");
+                oldMoanEnd = s.source.clip.name;
+                // Debug.Log("TEST" + audioS[5].clip.name);
+
+            }
+            // Debug.Log(s.name); 
+
+        }
 
     }
 }
