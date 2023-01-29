@@ -89,6 +89,8 @@ using UnityEngine.Rendering;
         [SerializeField]
         private List<GameObject> doorsGO; //Needs to be Left, and then Right. The waited GO is the one stored in the tree in Gameplay -> ....Wall -> DoorXScaler -> The game object you have to select
 
+    public bool doorsLocked = false;
+
         private bool enteringDoorLeft = true;
 
         // Start is called before the first frame update
@@ -102,7 +104,16 @@ using UnityEngine.Rendering;
 
         protected void Update()
         {
-            //
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.K))
+        {
+            doorsLocked = true;
+        }
+        else if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.K))
+            {
+                doorsLocked = false;
+            }
+
+
         }
 
         public void CallToCome()
@@ -294,6 +305,19 @@ using UnityEngine.Rendering;
         private IEnumerator DoorKnockFeedback(bool left)
         {
         
+        if (doorsLocked)
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.K))
+            {
+                left = true;
+            }  
+        }
+
+
         SoundTransmitter.Instance.Play(left ? "KnockL" : "KnockR");
 
             Transform door = doors[left ? 0 : 1];
