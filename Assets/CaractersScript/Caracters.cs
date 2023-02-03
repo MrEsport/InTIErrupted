@@ -107,11 +107,17 @@ using UnityEngine.Rendering;
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.K))
         {
             doorsLocked = true;
+          //  SoundTransmitter.Instance.Play(enteringDoorLeft ? "LockL" : "LockR");
         }
         else if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.K))
             {
                 doorsLocked = false;
             }
+
+        if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.K))
+        {
+            SoundTransmitter.Instance.Play(enteringDoorLeft ? "LockL" : "LockR");
+        }
 
 
         }
