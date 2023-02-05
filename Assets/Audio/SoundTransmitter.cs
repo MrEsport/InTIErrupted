@@ -38,10 +38,12 @@ public class SoundTransmitter : MonoBehaviour
     public Sound[] sounds;
 
     private string[] guids2;
+    private object[] guids3;
     public AudioClip[] moansAudio;
     private string oldMoan;
 
     private string[] guids;
+    private object[] guids4;
     public AudioClip[] moansAudioEnd;
     private string oldMoanEnd;
 
@@ -72,25 +74,42 @@ public class SoundTransmitter : MonoBehaviour
             
             if(s.playOnAwake) Play(s.name);
         }
-        guids2 = AssetDatabase.FindAssets("t:AudioClip", new[] { "Assets/Sound/Moans" });
-        moansAudio = new AudioClip[guids2.Length];
-        int i = 0;
-        foreach (string guid2 in guids2)
+
+        //guids2 = AssetDatabase.FindAssets("t:AudioClip", new[] { "Assets/Resources/Moans" });
+        guids3 = Resources.LoadAll("Moans", typeof(AudioClip));
+        moansAudio = new AudioClip[guids3.Length];
+        Debug.Log("GMA:" + guids3.Length);
+        Debug.Log("MA:" + moansAudio.Length);
+        /*   int x = 0;
+           foreach (string guid2 in guids2)
+           {
+               Debug.Log(AssetDatabase.GUIDToAssetPath(guid2));
+               moansAudio[x] = (AudioClip)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid2), typeof(AudioClip));
+               x++;
+           } */
+        for(int i = 0; i < guids3.Length; i++)
         {
-            Debug.Log(AssetDatabase.GUIDToAssetPath(guid2));
-            moansAudio[i] = (AudioClip)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid2), typeof(AudioClip));
-            i++;
-        }
+           moansAudio[i] = (AudioClip)guids3[i];
+        } 
+
         oldMoan = "BaseMoan";
 
-        guids = AssetDatabase.FindAssets("t:AudioClip", new[] { "Assets/Sound/MoanEnd" });
-        moansAudioEnd = new AudioClip[guids.Length];
-        int y = 0;
-        foreach (string guid in guids)
+        //  guids = AssetDatabase.FindAssets("t:AudioClip", new[] { "Assets/Resources/MoanEnd" });
+        guids4 = Resources.LoadAll("MoanEnd", typeof(AudioClip));
+        moansAudioEnd = new AudioClip[guids4.Length];
+        Debug.Log("GMAE:" + guids4.Length);
+        Debug.Log("MAE:" + moansAudioEnd.Length);
+        /*   int z = 0;
+           foreach (string guid in guids)
+           {
+               Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
+               moansAudioEnd[z] = (AudioClip)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(AudioClip));
+               z++;
+           } */
+
+        for (int i = 0; i < guids4.Length; i++)
         {
-            Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
-            moansAudioEnd[y] = (AudioClip)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(AudioClip));
-            y++;
+            moansAudioEnd[i] = (AudioClip)guids4[i];
         }
         oldMoanEnd = "BaseMoanEnd";
 
