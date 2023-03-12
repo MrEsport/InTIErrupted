@@ -148,59 +148,60 @@ using UnityEngine.Rendering;
             return isCat;
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
-        private IEnumerator ComeToRoom()
-        {
-            // delay after knocking
-            yield return new WaitForSeconds(delay);
-            ShowIntruder();
-        
+    // ReSharper disable Unity.PerformanceAnalysis
+    private IEnumerator ComeToRoom()
+    {
+        // delay after knocking
+        yield return new WaitForSeconds(delay);
+        ShowIntruder();
+
         SoundTransmitter.Instance.Play("DoorOpen");
+
+
+        yield return new WaitForSeconds(delayForSayingSomething);
+        ShowIcons();
+
+        Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
+
+        ButtonManager.Instance.CheckButtons();
+
+        bool noButton = ButtonManager.Instance.NoButton;
+        bool tooMany = ButtonManager.Instance.IsTooMany;
+
+        if (noButton || tooMany)
+            ChangeState(State.Detect);
         
-
-            yield return new WaitForSeconds(delayForSayingSomething);
-            ShowIcons();
-
-            Debug.Log($"{textData.GetTextWhenCome()[_indexWhenCome]}");
-
-            ButtonManager.Instance.CheckButtons();
-
-            bool noButton = ButtonManager.Instance.NoButton;
-            bool tooMany = ButtonManager.Instance.IsTooMany;
-
-            if (noButton || tooMany)
-                ChangeState(State.Detect);
-
-            switch (state)
-            {
-                case State.Detect:
-                    {
-                        StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
+        switch (state)
+        {
+            case State.Detect:
+                {
+                    StartCoroutine(SayText(textData.GetTextWhenDetectSomething()[_indexWhenDetectSomething], delayForSayingSomething));
                     GameOver();
-                        break;
-                    }
-                case State.Normal:
-                    {
-                        StartCoroutine(SayText(textData.GetTextWhenNothingSus()[_indexWhenNothingSus], delayForSayingSomething));
-                        StartCoroutine(Disappear());
-                        break;
-                    }
-                case State.Sus:
-                    {
-                        StartCoroutine(SayText(textData.GetTextWhenSus()[_indexWhenSus], delayForSayingSomething));
-                        StartCoroutine(Disappear());
-                        break;
-                    }
+                    break;
+                }
+            case State.Normal:
+                {
+                    StartCoroutine(SayText(textData.GetTextWhenNothingSus()[_indexWhenNothingSus], delayForSayingSomething));
+                    StartCoroutine(Disappear());
+                    break;
+                }
+            case State.Sus:
+                {
+                    StartCoroutine(SayText(textData.GetTextWhenSus()[_indexWhenSus], delayForSayingSomething));
+                    StartCoroutine(Disappear());
+                    break;
+                }
 
-                default:
-                    throw new ArgumentOutOfRangeException();
-            };
+            default:
+                throw new ArgumentOutOfRangeException();
+        };
 
-            if (ButtonManager.Instance.NoButton)
-                yield break;
+        if (ButtonManager.Instance.NoButton)
+            yield break;
 
-            List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
+        List<PushedButton> pushedButtons = ButtonManager.Instance.GetPushedButtons();
 
+        if (!isCat) { 
             for (int i = 0; i < pushedButtons.Count; i++)
             {
                 Sprite stateSprite = (pushedButtons[i].count) switch
@@ -223,6 +224,7 @@ using UnityEngine.Rendering;
                     icon2.gameObject.SetActive(showIcon);
                 }
             }
+    }
       //  interrupterSprite.gameObject.GetComponent<Animator>().SetBool("Talked", true);
     }
 
