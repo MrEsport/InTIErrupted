@@ -106,17 +106,21 @@ public class GameManager : MonoBehaviour
 
     public void KeysWin()
     {
-        Debug.Log("Clés trouvées.. Porte fermées... (¬ v ¬)\nGAME OVER");
-        endingGame = true;
-        Zawarudo.stop = true;
-        SoundTransmitter.Instance.Stop("Music");
-        SoundTransmitter.Instance.Play("HeartBeat");
-        GameObject tempVol;
-        tempVol = GameObject.Find("Chara").gameObject;
-       // tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().orgasmPPVolume;
-      //      StartCoroutine(LaunchVictory(tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>()));
-         tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>().SetBool("Flashing", true);
-      // SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "MainScene")
+        {
+            Debug.Log("Clés trouvées.. Porte fermées... (¬ v ¬)\nGAME OVER");
+            endingGame = true;
+            Zawarudo.stop = true;
+            SoundTransmitter.Instance.Stop("Music");
+            SoundTransmitter.Instance.Play("HeartBeat");
+            GameObject tempVol;
+            tempVol = GameObject.Find("Chara").gameObject;
+            // tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Volume>().profile = tempVol.GetComponent<Caracters>().orgasmPPVolume;
+            //      StartCoroutine(LaunchVictory(tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>()));
+            tempVol.GetComponent<Caracters>().mainCamera.GetComponent<Animator>().SetBool("Flashing", true);
+            // SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+        }
 
     }
 

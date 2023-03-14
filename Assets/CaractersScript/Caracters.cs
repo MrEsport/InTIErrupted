@@ -119,6 +119,17 @@ using UnityEngine.Rendering;
             SoundTransmitter.Instance.Play(enteringDoorLeft ? "LockL" : "LockR");
         }
 
+        if (Input.anyKeyDown)
+        {
+            if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.B))
+            {
+                SoundTransmitter.Instance.Play("ButtonPushed"); 
+            }  
+        }
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            SoundTransmitter.Instance.Play("ButtonPushed");
+        }
 
         }
 

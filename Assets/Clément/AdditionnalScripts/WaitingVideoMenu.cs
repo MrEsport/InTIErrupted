@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class WaitingVideoMenu : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class WaitingVideoMenu : MonoBehaviour
                 SoundManager.SetActive(true);
                 hasWait = false;
                 isVideoPlaying = !isVideoPlaying;
+                StopAllCoroutines();
+               // SceneManager.LoadScene("MenuPlay");
             }
             else
             {

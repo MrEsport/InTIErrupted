@@ -267,7 +267,8 @@ MonoBehaviour:
   moansAudio: []
   video:
   - {fileID: 32900000, guid: e98d89d4a0037a046a25a2d57e542e87, type: 3}
-  - {fileID: 32900000, guid: 2f0aae0dbfd108a4fb7a5a71424310d4, type: 3}
+  - {fileID: 32900000, guid: 6c5069d0d422c0749b1b0f505d01df53, type: 3}
+  waitTimeAmount: 120
   hasWait: 0
 --- !u!1 &137166337
 GameObject:
@@ -498,7 +499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[12].pan
@@ -506,6 +507,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[13].pan
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[14].pan
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
@@ -581,6 +586,14 @@ PrefabInstance:
       value: LockR
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 106612bd30fdee745a0b90a044e1b3ce, type: 3}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: ButtonPushed
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[5].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -614,6 +627,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[13].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[14].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
@@ -657,6 +674,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[14].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[5].audioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
@@ -690,6 +711,10 @@ PrefabInstance:
       objectReference: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
     - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
       propertyPath: sounds.Array.data[13].audioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
+    - target: {fileID: -5662604925025709206, guid: 709db372e581ef14683b19ffa453474d, type: 3}
+      propertyPath: sounds.Array.data[14].audioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: ab8aaaee6d69e4a4cbe7c7660a65bff8, type: 2}
     - target: {fileID: 1316951866739554198, guid: 709db372e581ef14683b19ffa453474d, type: 3}
@@ -1151,6 +1176,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 1748
       objectReference: {fileID: 0}
+    - target: {fileID: 4589634825821367617, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbc4ae918187b394caca61aaa5e1a815, type: 3}
+    - target: {fileID: 4589634825821367617, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a7d45e5e68e7bdd4eb335495a48dc1e9, type: 3}
+    - target: {fileID: 4589634825821367617, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbc4ae918187b394caca61aaa5e1a815, type: 3}
+    - target: {fileID: 4589634825821367617, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bbc4ae918187b394caca61aaa5e1a815, type: 3}
+    - target: {fileID: 4589634825821367618, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a7d45e5e68e7bdd4eb335495a48dc1e9, type: 3}
     - target: {fileID: 4589634825882273711, guid: 3bf34711a4be99c438eeb00d4fd35f26, type: 3}
       propertyPath: m_IsActive
       value: 1
