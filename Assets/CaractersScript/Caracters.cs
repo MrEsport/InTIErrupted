@@ -121,7 +121,7 @@ using UnityEngine.Rendering;
 
         if (Input.anyKeyDown)
         {
-            if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.B))
+            if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.B) && !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
             {
                 SoundTransmitter.Instance.Play("ButtonPushed"); 
             }  
