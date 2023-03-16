@@ -41,9 +41,10 @@ public class WaitingVideoMenu : MonoBehaviour
         {
             if (isVideoPlaying)
             {
+                SoundTransmitter.Instance.Play("Music");
                 videoPlayer.Stop();
                 canvas.SetActive(true);
-                SoundManager.SetActive(true);
+               // SoundManager.SetActive(true);
                 hasWait = false;
                 isVideoPlaying = !isVideoPlaying;
                 StopAllCoroutines();
@@ -51,6 +52,7 @@ public class WaitingVideoMenu : MonoBehaviour
             }
             else
             {
+                SoundTransmitter.Instance.StopAll();
                 int nbAlea;
                 nbAlea = Random.Range(0, video.Count);
 
@@ -60,7 +62,8 @@ public class WaitingVideoMenu : MonoBehaviour
                 videoPlayer.clip = video[nbAlea];
                 videoPlayer.Play();
                 canvas.SetActive(false);
-                SoundManager.SetActive(false);
+                // SoundManager.SetActive(false);
+                
                 hasWait = true;
                 isVideoPlaying = !isVideoPlaying;
             }
@@ -68,6 +71,7 @@ public class WaitingVideoMenu : MonoBehaviour
 
         if (hasWait && !isVideoPlaying)
         {
+            SoundTransmitter.Instance.StopAll();
             int nbAlea;
             nbAlea = Random.Range(0, video.Count);
 
@@ -77,7 +81,7 @@ public class WaitingVideoMenu : MonoBehaviour
             videoPlayer.clip = video[nbAlea];
             videoPlayer.Play();
             canvas.SetActive(false);
-            SoundManager.SetActive(false);
+           // SoundManager.SetActive(false);
 
             isVideoPlaying = !isVideoPlaying;
         }
@@ -100,6 +104,6 @@ public class WaitingVideoMenu : MonoBehaviour
             yield return new WaitForSeconds(waitTimeAmount);
             hasWait = true;
             waitRoutine = null;
-        }
+        } 
     }
 }
